@@ -6,7 +6,7 @@ import frc.robot.RobotContainer;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 import edu.wpi.first.wpilibj.drive.MecanumDrive;
-public class mecanumBase extends SubsystemBase
+public class MecanumBase extends SubsystemBase
 {
     private CANSparkMax frontLeft = new CANSparkMax(5, MotorType.kBrushless);
     private CANSparkMax backLeft = new CANSparkMax(2, MotorType.kBrushless);
@@ -14,7 +14,7 @@ public class mecanumBase extends SubsystemBase
     private CANSparkMax backRight = new CANSparkMax(4, MotorType.kBrushless);
     
     private MecanumDrive robot = new MecanumDrive(frontLeft, backLeft, frontRight, backRight);
-    public mecanumBase()
+    public MecanumBase()
     {
         // Constructor
     }
@@ -28,6 +28,11 @@ public class mecanumBase extends SubsystemBase
     public void simulationPeriodic()
     {
         // This method will be called once per scheduler run during simulation
+    }
+
+    public void drive()
+    {
+        robot.driveCartesian(RobotContainer.getX(), RobotContainer.getY(), RobotContainer.getR());
     }
 }
 
