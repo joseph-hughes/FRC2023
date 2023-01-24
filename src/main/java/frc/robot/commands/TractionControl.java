@@ -20,13 +20,24 @@ public class TractionControl extends CommandBase {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    
+    double frontLeft = m_subsystem.frontLeft.getEncoder().getVelocity();
+    double frontRight = m_subsystem.frontRight.getEncoder().getVelocity();
+    double backLeft = m_subsystem.backLeft.getEncoder().getVelocity();
+    double backRight = m_subsystem.backRight.getEncoder().getVelocity();
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
+    // Get velocity of each motor
+    double frontLeft = m_subsystem.frontLeft.getEncoder().getVelocity();
+    double frontRight = m_subsystem.frontRight.getEncoder().getVelocity();
+    double backLeft = m_subsystem.backLeft.getEncoder().getVelocity();
+    double backRight = m_subsystem.backRight.getEncoder().getVelocity();
+
+    // Determine what each motor should be set to
     
+
   }
 
   // Called once the command ends or is interrupted.
