@@ -9,11 +9,11 @@ import edu.wpi.first.wpilibj.drive.MecanumDrive;
 public class MecanumBase extends SubsystemBase
 {
     public CANSparkMax frontLeft = new CANSparkMax(5, MotorType.kBrushless);
-    public CANSparkMax backLeft = new CANSparkMax(2, MotorType.kBrushless);
+    public CANSparkMax rearLeft = new CANSparkMax(2, MotorType.kBrushless);
     public CANSparkMax frontRight = new CANSparkMax(3, MotorType.kBrushless);
-    public CANSparkMax backRight = new CANSparkMax(4, MotorType.kBrushless);
+    public CANSparkMax rearRight = new CANSparkMax(4, MotorType.kBrushless);
     
-    private MecanumDrive robot = new MecanumDrive(frontLeft, backLeft, frontRight, backRight);
+    private MecanumDrive robot = new MecanumDrive(frontLeft, rearLeft, frontRight, rearRight);
     public MecanumBase()
     {
         // Constructor
