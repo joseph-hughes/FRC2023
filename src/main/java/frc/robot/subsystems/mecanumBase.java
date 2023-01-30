@@ -8,20 +8,24 @@ import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 import edu.wpi.first.wpilibj.drive.MecanumDrive;
 public class mecanumBase extends SubsystemBase
 {
-    private CANSparkMax frontLeft = new CANSparkMax(5, MotorType.kBrushless);
-    private CANSparkMax backLeft = new CANSparkMax(2, MotorType.kBrushless);
-    private CANSparkMax frontRight = new CANSparkMax(3, MotorType.kBrushless);
-    private CANSparkMax backRight = new CANSparkMax(4, MotorType.kBrushless);
+    private CANSparkMax frontLeft = new CANSparkMax(4, MotorType.kBrushless);
+    private CANSparkMax backLeft = new CANSparkMax(3, MotorType.kBrushless);
+    private CANSparkMax frontRight = new CANSparkMax(2, MotorType.kBrushless);
+    private CANSparkMax backRight = new CANSparkMax(5, MotorType.kBrushless);
     
     private MecanumDrive robot = new MecanumDrive(frontLeft, backLeft, frontRight, backRight);
     public mecanumBase()
     {
+        backLeft.setInverted(true);
+        frontLeft.setInverted(true);
+        
         // Constructor
     }
     @Override
     public void periodic()
     {
-        robot.driveCartesian(RobotContainer.getX(), RobotContainer.getY(), RobotContainer.getR());
+        //System.out.println(RobotContainer.getGryoYawAngle());
+        robot.driveCartesian(RobotContainer.getF(), RobotContainer.getS(), RobotContainer.getR(),RobotContainer.getGryoYawAngle());
         // This method will be called once per scheduler run
     }
     @Override

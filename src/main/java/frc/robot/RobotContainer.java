@@ -5,14 +5,19 @@
 package frc.robot;
 
 import frc.robot.Constants.OperatorConstants;
-import frc.robot.commands.Autos;
-import frc.robot.commands.ExampleCommand;
+import frc.robot.commands.*;
 import frc.robot.subsystems.ExampleSubsystem;
 import frc.robot.subsystems.mecanumBase;
+
+import com.kauailabs.navx.frc.AHRS;
+
+import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
+import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
+
 
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a
@@ -23,13 +28,20 @@ import edu.wpi.first.wpilibj2.command.button.Trigger;
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
   private mecanumBase drive;
+  private GyroResetCommand gyroReset;
   private static Joystick stick = new Joystick(0);
+  private static AHRS gyro = new AHRS();
   // Replace with CommandPS4Controller or CommandJoystick if needed
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
     // Configure the trigger bindings
     drive= new mecanumBase();
-   
+    gyroReset=new GyroResetCommand();
+    configureButtonBindings();
+  }
+
+  private void configureButtonBindings() {
+    new JoystickButton(stick, 12).whenPressed(gyroReset);
   }
 
   /**
@@ -51,20 +63,29 @@ public class RobotContainer {
    * @return the command to run in autonomous
    */
 public static double getMotorSpeed() {
-    System.out.println(stick.getRawAxis(3));
-    return stick.getRawAxis(3);
+    //System.out.println(stick.getRawAxis(3));
+    return (stick.getRawAxis(3)+1)/2;
     //return 0.30;
 }
 
-public static double getX() {
+public static double getF() {
     return stick.getRawAxis(1)*getMotorSpeed();
 }
 
-public static double getY() {
-    -return stick.getRawAxis(0)*getMotorSpeed();
+public static double getS() {
+    return -stick.getRawAxis(0)*getMotorSpeed();
 }
 
 public static double getR() {
     return stick.getRawAxis(2)*getMotorSpeed();
 }
+public static Rotation2d getGryoYawAngle()
+{
+  return Rotation2d.fromDegrees(gyro.getAngle());
+}
+
+public static void resetGyro() {
+  gyro.zeroYaw();
+}
+
 }
