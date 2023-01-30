@@ -6,9 +6,7 @@ package frc.robot;
 
 import frc.robot.Constants.OperatorConstants;
 import frc.robot.commands.*;
-import frc.robot.subsystems.ExampleSubsystem;
-import frc.robot.subsystems.mecanumBase;
-
+import frc.robot.subsystems.*;
 import com.kauailabs.navx.frc.AHRS;
 
 import edu.wpi.first.math.geometry.Rotation2d;
@@ -27,7 +25,7 @@ import edu.wpi.first.wpilibj2.command.button.Trigger;
  */
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
-  private mecanumBase drive;
+  private MecanumBase drive;
   private GyroResetCommand gyroReset;
   private static Joystick stick = new Joystick(0);
   private static AHRS gyro = new AHRS();
@@ -35,7 +33,7 @@ public class RobotContainer {
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
     // Configure the trigger bindings
-    drive= new mecanumBase();
+    drive= new MecanumBase();
     gyroReset=new GyroResetCommand();
     configureButtonBindings();
   }

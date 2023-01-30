@@ -13,7 +13,7 @@ public class MecanumBase extends SubsystemBase
     private CANSparkMax frontRight = new CANSparkMax(2, MotorType.kBrushless);
     private CANSparkMax backRight = new CANSparkMax(5, MotorType.kBrushless);
     
-    private MecanumDrive robot = new MecanumDrive(frontLeft, rearLeft, frontRight, rearRight);
+    private MecanumDrive robot = new MecanumDrive(frontLeft, backLeft, frontRight, backRight);
     public MecanumBase()
     {
         backLeft.setInverted(true);
@@ -36,7 +36,7 @@ public class MecanumBase extends SubsystemBase
 
     public void drive()
     {
-        robot.driveCartesian(RobotContainer.getX(), RobotContainer.getY(), RobotContainer.getR());
+        robot.driveCartesian(RobotContainer.getF(), RobotContainer.getS(), RobotContainer.getR());
     }
     public double getVelocity(CANSparkMax motor)
     {
