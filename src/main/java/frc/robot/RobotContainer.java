@@ -35,9 +35,9 @@ import edu.wpi.first.wpilibj.DigitalInput;
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
   //RR 1/11/2022
-  public static final XboxController m_driverController = new XboxController(1);
+  public static final XboxController m_driverController = new XboxController(0);
   //public static final XboxController m_driverController2 = new XboxController(1);//change
-  public static final Joystick m_joystick1 = new Joystick(2);  
+  public static final Joystick m_joystick1 = new Joystick(1);  
 
   //INSTANTIATES ALL SUBSYSTEMS
   private final ExampleSubsystem m_exampleSubsystem = new ExampleSubsystem();
