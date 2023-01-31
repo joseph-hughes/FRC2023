@@ -16,8 +16,8 @@ public class MecanumBase extends SubsystemBase
     private MecanumDrive robot = new MecanumDrive(frontLeft, backLeft, frontRight, backRight);
     public MecanumBase()
     {
-        backLeft.setInverted(true);
-        frontLeft.setInverted(true);
+        backRight.setInverted(true);
+        frontRight.setInverted(true);
         
         // Constructor
     }
@@ -25,7 +25,7 @@ public class MecanumBase extends SubsystemBase
     public void periodic()
     {
         //System.out.println(RobotContainer.getGryoYawAngle());
-        robot.driveCartesian(RobotContainer.getF(), RobotContainer.getS(), RobotContainer.getR(),RobotContainer.getGryoYawAngle());
+        //robot.driveCartesian(RobotContainer.getF(), RobotContainer.getS(), RobotContainer.getR(),RobotContainer.getGryoYawAngle());
         // This method will be called once per scheduler run
     }
     @Override
